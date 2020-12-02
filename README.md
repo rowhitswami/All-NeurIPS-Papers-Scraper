@@ -2,6 +2,16 @@
 
 A quick script to scrap and save all the published papers in [Neural Information Processing Systems](https://nips.cc/) (abbreviated as **NeurIPS** and formerly **NIPS**) from 1987 to 2019.
 
+## Content
+The script scrap and save the data in two files.
+#### 1. papers.csv
+
+![](https://i.imgur.com/G8atzkU.png)
+
+#### 2. paper_authors.csv
+
+![](https://i.imgur.com/IbIqlSR.png)
+
 ## Code
   - Clone the repo.
   
