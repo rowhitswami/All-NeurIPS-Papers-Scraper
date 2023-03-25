@@ -74,12 +74,6 @@ def scrap_paper_and_authors(year, year_url, hashes):
     """Scrap papers and authors using extracted hashes"""
 
     for paper_hash in tqdm(hashes):
-        # https://papers.nips.cc/paper_files/paper/2022/hash/002262941c9edfd472a79298b2ac5e17-Abstract-Conference.html
-        #  Contains metadata like 
-        #     <meta name="citation_pdf_url" content="https://proceedings.neurips.cc/paper_files/paper/2022/file/002262941c9edfd472a79298b2ac5e17-Paper-Conference.pdf">
-
-        # https://papers.nips.cc/paper_files/paper/2019/file/00989c20ff1386dc386d8124ebcba1a5-Metadata.json
-
         if year <= 2019:
           paper_url = year_url + "/file/" + paper_hash + "-Metadata.json"
           response = requests.get(paper_url, headers=HEADERS)
@@ -108,7 +102,10 @@ def scrap_paper_and_authors(year, year_url, hashes):
               print("Couldn't complete the request.")
               break
         else: # Post 2020
-          # https://proceedings.neurips.cc/paper_files/paper/2020/file/00482b9bed15a272730fcb590ffebddd-Paper.pdf
+          # https://papers.nips.cc/paper_files/paper/2022/hash/002262941c9edfd472a79298b2ac5e17-Abstract-Conference.html
+          #  Contains metadata like 
+          #     <meta name="citation_pdf_url" content="https://proceedings.neurips.cc/paper_files/paper/2022/file/002262941c9edfd472a79298b2ac5e17-Paper-Conference.pdf">
+
           paper_url = f'{BASE_URL_20}/{year}/hash/{paper_hash}-Abstract.html'
           response = requests.get(paper_url, headers=HEADERS)
           if response.status_code == 200:
